@@ -4,6 +4,7 @@ A Node.js client wrapper for the [Piston API](https://github.com/engineer-man/pi
 
 Piston is a high performance general purpose code execution engine. It excels at running untrusted and possibly malicious code without fear from any harmful effects.
 
+<br>
 
 ## Installation
 
@@ -11,8 +12,7 @@ Piston is a high performance general purpose code execution engine. It excels at
 npm install piston-client
 ```
 
-
-## Usage Example
+### Usage Example
 
 ```
 import piston from "piston-client";
@@ -35,6 +35,8 @@ import piston from "piston-client";
 
 })();
 ```
+
+<br>
 
 ## Documentation
 
@@ -109,7 +111,7 @@ import piston from "piston-client";
 
 See [Piston documentation](https://github.com/engineer-man/piston#execute-endpoint) for the available options. The only difference is that the option are in camelCase as opposed to snake_case.
 
-#### Error handling
+### Error handling
 
 Any error will return an object with the following signature:
 
@@ -118,6 +120,8 @@ Any error will return an object with the following signature:
 ```
 
 No errors are thrown so wrapping in `try / catch` is unnecessary.
+
+<br>
 
 ## License
 
