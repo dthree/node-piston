@@ -8,13 +8,13 @@ Piston is a high performance general purpose code execution engine. It excels at
 
 ## Installation
 
-```
+```bash
 npm install piston-client
 ```
 
 ### Usage Example
 
-```
+```js
 import piston from "piston-client";
 
 (async () => {
@@ -42,7 +42,7 @@ import piston from "piston-client";
 
 ### `piston(options)`
 
-```
+```js
 import piston from "piston-client";
 const client = piston({});
 ```
@@ -55,7 +55,7 @@ Creates a new client. Accepts an `options` object as its first argument.
 
 ### `client.runtimes()`
 
-```
+```js
 import piston from "piston-client";
 (async () => {
     const client = piston();
@@ -69,7 +69,7 @@ Returns an array of available runtimes. [See Piston documentation for the runtim
 
 Execute arbitrary code for a given language and version.
 
-```
+```js
 import piston from "piston-client";
 (async () => {
     const client = piston();
@@ -86,7 +86,7 @@ import piston from "piston-client";
 
 To execute Piston with more fine-tuned control, pass in a `config` object as the first and only parameter.
 
-```
+```js
 import piston from "piston-client";
 (async () => {
     const client = piston();
@@ -115,7 +115,7 @@ See [Piston documentation](https://github.com/engineer-man/piston#execute-endpoi
 
 Any error will return an object with the following signature:
 
-```
+```js
 { success: false, error: Error }
 ```
 
