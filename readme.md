@@ -65,7 +65,7 @@ import piston from "piston-client";
 
 Returns an array of available runtimes. [See Piston documentation for the runtimes endpoint](https://github.com/engineer-man/piston#runtimes-endpoint).
 
-### `client.execute(language:version, code)`
+### `client.execute(language[:version], code)`
 
 Execute arbitrary code for a given language and version.
 
