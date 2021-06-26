@@ -24,7 +24,7 @@ import piston from "piston-client";
     const runtimes = await client.runtimes();
     // [{ language: 'python', version: '3.9.4', aliases: ['py'] }, ...]
 
-    const result = await client.execute('python:3.9.4', 'print("Hello World!")');
+    const result = await client.execute('python', 'print("Hello World!")');
     // { language: 'python', version: '3.9.4', run: {
     //     stdout: 'Hello World!\n',
     //     stderr: '',
@@ -65,22 +65,23 @@ import piston from "piston-client";
 
 Returns an array of available runtimes. [See Piston documentation for the runtimes endpoint](https://github.com/engineer-man/piston#runtimes-endpoint).
 
-### `client.execute(language:version, code)`
+### `client.execute(language, code, [config])`
 
-Execute arbitrary code for a given language and version.
+Execute arbitrary code for a given language. Additional, optional config can be passed in the third parameter.
 
 ```js
 import piston from "piston-client";
 (async () => {
     const client = piston();
-    const runtimes = await client.execute('javascript', 'console.log("Hello world!")');
+    const result = await client.execute('javascript', 'console.log("Hello world!")', { language: '3.9.4 '});
 })();
 ```
 
 ##### Options
 
-- `language` - Expects a string of either the language (`python`), or the language and version separated by a colon (`python:3.9.4`). If no version is specified, the latest version is chosen.
+- `language` - Expects a string of the language.
 - `code` - Expects a string of the code to execute.
+- `config` - Expects an object with additional config. See [Piston documentation](https://github.com/engineer-man/piston#execute-endpoint) for the available config options.
 
 ### `client.execute(config)`
 
@@ -90,7 +91,7 @@ To execute Piston with more fine-tuned control, pass in a `config` object as the
 import piston from "piston-client";
 (async () => {
     const client = piston();
-    const runtimes = await client.execute({
+    const result = await client.execute({
         "language": "js",
         "version": "15.10.0",
         "files": [{

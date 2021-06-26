@@ -25,17 +25,15 @@ export const piston = (opts = {}) => {
       return runtimes;
     },
 
-    async execute(argA, argB) {
+    async execute(argA, argB, argC) {
       const runtimes = await api.runtimes();
       if (runtimes.success === false) {
         return runtimes;
       }
 
-      const config = typeof argA === 'object' ? argA : typeof argB === 'object' ? argB : {};
+      const config = typeof argA === 'object' ? argA : typeof argB === 'object' ? argB : argC || {};
       let language = (typeof argA === 'string') ? argA : undefined;
       language = language || config.language;
-      const version = (language) ? String(language).split(':')[1] : undefined;
-      language = String(language).split(':')[0];
       const code = typeof argB === 'string' ? argB : undefined;
       const latestVersion = (runtimes.filter(n => n.language === language).sort((a, b) => {
         return a.version > b.version ? -1 : b.version > a.version ? 1 : 0;
@@ -43,7 +41,7 @@ export const piston = (opts = {}) => {
 
       const boilerplate = {
         "language": language,
-        "version": version || latestVersion,
+        "version": config.version || latestVersion,
         "files": or(config.files, [{
             "content": code
         }]),
